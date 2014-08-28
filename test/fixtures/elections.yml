@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_votes: MyString
+  in_favor: MyString
+  against: MyString
+  vote: MyString
+  article_id: 
+
+two:
+  total_votes: MyString
+  in_favor: MyString
+  against: MyString
+  vote: MyString
+  article_id: 

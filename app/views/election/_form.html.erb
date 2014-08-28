@@ -1,0 +1,21 @@
+﻿
+<%= form_for([@article, @article.election]) do |f| %> 
+<p class="vote2">Äänesi
+<%= f.text_field :vote, class: "vote", value:"", size:"2"%> <br>
+<%= f.submit "Vahvista", class: "btn btn-large btn-primary", data: { confirm: "You sure?" }%> 
+</p> 
+<% end %>
+
+<script>
+function in_favor() {
+    
+    document.getElementById("election_vote").value = "JAA";
+
+}
+
+function against() {
+    
+    document.getElementById("election_vote").value = "EI";
+
+}
+</script>

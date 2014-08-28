@@ -1,0 +1,54 @@
+﻿<style>
+
+.chart{
+  font: 12px sans-serif;
+    text-align: center;
+  padding: 1px;
+  margin: 1px;
+  color: white;
+}
+
+.yes_chart {
+background-color: green;
+height: 20px;
+font: 12px sans-serif;
+color: white;
+text-align: center;
+}
+.no_chart {
+background-color: red;
+height: 20px;
+font: 12px sans-serif;
+color: white;
+text-align: center;
+}
+
+</style>
+<%a = @ar.election.in_favor %>
+<%b = @ar.election.against %>
+<%tot = @ar.election.total_votes %>
+<% s = 0.0 %>
+<% s2 = 0.0 %> 
+<% if tot >0 %>
+<%  s = ((a.to_f/tot)*100*10).round/10.0 %>
+<%  s2 = ((b.to_f/tot)*100*10).round/10.0 %>
+<% end%>
+
+  <div id="yes"; class="yes_chart"; style="width: <%=s%>px; float:left"><%=s%>%</div>
+  <div id="yes"; class="no_chart"; style="width: <%=s2%>px; float:left"><%=s2%>%</div>
+
+
+
+
+<script>
+function votes_share(tv,v) {
+    s = 0;
+    if tv > 0
+      s = (v/tv)*100.0
+    end
+    return s 
+}
+document.getElementById("yes").innerHTML = votes_share(tot,a);
+
+
+</script>

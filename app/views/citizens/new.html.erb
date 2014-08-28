@@ -1,0 +1,25 @@
+﻿<% provide(:title, 'Rekisteröidy') %>
+<h1>Rekisteröidy</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@citizen) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name, "Nimi" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email, "Sähköposti" %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password, "Salasana" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Vahvistus" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Luo tili", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

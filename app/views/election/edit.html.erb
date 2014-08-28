@@ -1,0 +1,33 @@
+﻿<% article = Article.find(params[:article_id])%>
+<h1 class="election">
+<%= article.title %>
+</h1>
+<p>
+<%= article.text %>
+</p>
+<h6 class="election">Kannatatteko yllä olevaa <%= article.title %> esitystä? <br> Äänestä: </h6>
+<p class="election"> 
+ <input type="submit" id="in_favor"  onclick="in_favor()" value="JAA"> 
+ <input type="submit" id="against"  onclick="against()" value="EI ">
+</p>
+
+<%= form_for(:election, url: article_election_path, html: {method: "patch"}) do |f| %> 
+<p class="vote2">
+<%= f.text_field :vote, class: "vote", value:"", size:"2", readonly:"true" %> <br>
+<%= f.submit "Vahvista", class: "btn btn-large btn-primary"%> 
+</p> 
+<% end %>
+
+<script>
+function in_favor() {
+    
+    document.getElementById("election_vote").value = "JAA";
+
+}
+
+function against() {
+    
+    document.getElementById("election_vote").value = "EI";
+
+}
+</script>

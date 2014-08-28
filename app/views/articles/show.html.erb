@@ -1,0 +1,55 @@
+﻿<style>
+td {
+    height: 500px;
+    vertical-align: top;
+    text-align:left;
+}
+th{
+     width:700px;
+	text-align:center;
+}
+h3 {
+   height: 50px;
+   text-align:center;
+   width:100%;
+}
+</style>
+
+<p class="election">
+<%= link_to 'Äänestä', edit_article_election_path(@article,@article.election.id)%>
+</p>
+
+<table style="width:100%">
+<tr>
+<td colspan="3" >
+<iframe src="<%= @article.url %>"    height=100%  width=100%>
+</iframe>
+</td>
+</tr>
+
+<tr>
+<td>
+<h2>Kommentit (<%= @article.comments.count %>)</h2> 
+
+
+
+
+<table style="width:750px">
+<%= render  @comments %>
+<%= will_paginate @comments, :previous_label => 'Edellinen', :next_label => 'Seuraava'  %>
+</table>
+
+<h2>Lisää kommentti:</h2> 
+<%= render "comments/form" %>
+
+ <%= link_to 'Paluu', articles_path %>
+| <%= link_to 'Muokkaa', edit_article_path(@article) %>
+
+</td>
+</tr>
+
+</table>
+
+
+</script>
+

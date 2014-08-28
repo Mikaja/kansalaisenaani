@@ -1,0 +1,37 @@
+﻿<header class="navbar navbar-fixed-top navbar-inverse ni">
+  <div class="navbar-inner ni">
+    <div class="container hc">
+      <%= link_to "Kansalaisen ääni", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          
+          <li><%= link_to "Etusivu", root_path %></li>
+          <li><%= link_to "Asiakirjat", controller: 'articles' %></li>                  
+          <li><%= link_to "Ohjeet", help_path %></li>
+          <% if signed_in? %>
+            <li><%= link_to "Jäsenet", citizens_path %></li>
+             <li>                  
+                  <%= link_to "Kirjaudu ulos", signout_path, method: "delete" %>
+             </li>
+            <li id="fat-menu" class="dropdown">
+              <a href= "#" class="dropdown-toggle" data-toggle="dropdown">
+                Tili <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profiili", current_citizen %></li>
+                <li><%= link_to "Asetukset", edit_citizen_path(current_citizen) %></li>
+                <li class="divider"></li>
+                
+              </ul>
+            </li>
+             
+          <% else %>
+            <li><%= link_to "Kirjaudu sisään", signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+

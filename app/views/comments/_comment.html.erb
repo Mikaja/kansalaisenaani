@@ -1,0 +1,19 @@
+
+
+<tr>
+<td style="height:20px" style="width:100px" style="text-align:left">
+<strong> 
+<%= comment.commenter %> 
+</strong> 
+</td> 
+<td style="height:20px" style="width:600px" style="text-align:left"> 
+<%= comment.body %> 
+</td>
+
+<td style="height:20px" style="width:50px" style="text-align:left"> 
+<%= link_to 'poista', [comment.article, comment], 
+method: :delete, 
+data: { confirm: 'Oletko varma?' } %> 
+</td>
+</tr>
+

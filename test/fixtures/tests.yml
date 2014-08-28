@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  testname: MyString
+  article_id: 
+
+two:
+  testname: MyString
+  article_id: 

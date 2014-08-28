@@ -1,0 +1,78 @@
+﻿<style>
+table, tr, th, td {
+    border-bottom-style: solid;
+    border-width: 1px;
+   
+}
+.text {
+    border-bottom-style: solid;
+    border-width: 5px;
+}
+table {
+    width: 100%;
+    
+}
+
+tr {
+    heigth: 30px;
+    
+}
+
+</style>
+
+
+
+<h1>Eduskunnassa olevia asiakirjoja</h1> 
+<div align="center">
+<%= form_tag(:search, url: search_path, method: "get") do %>
+  <%= label_tag(:q, "Asiakirjan tyyppi:") %>
+  <select name="proposal", class="proposal">
+     <option value="KAIKKI" selected>Kaikki</option>
+     <option value="HE">Hallituksen esitykset (HE)</option>
+     <option value="LA">Lakialoitteet (LA)</option>
+     <option value="VK">Välikysymykset (VK)</option>
+     <option value="MUUT">Muut</option>
+  </select>
+  <%= submit_tag("Hae") %>
+<% end %>
+</div>
+
+<%= link_to 'Lisää asiakirja', new_article_path %>
+
+<br>
+<br>
+<p id="testi"></p>
+<%= will_paginate :previous_label => 'Edellinen', :next_label => 'Seuraava' %>
+<table id="article_list"> 
+ <% @articles.each do |article| %> 
+ <% @ar = article%>
+<tr style="border-bottom-style: 20px dotted red"> 
+<td style="width:350px"><a href=<%= article.url %> ><%= article.title %>  </a> </td> 
+
+<td style="width:60px"><%= link_to 'Näytä', article_path(article) %></td> 
+
+<td style="width:200px">Ääniä: <%= article.election.total_votes %> </td>
+<td style="width:160px">JAA: <%= article.election.in_favor %> </td>
+<td style="width:160px">EI: <%= article.election.against %> </td>
+<td style="width:160px"><%= render "election_chart" %> </td>
+
+<% if signed_in? %>
+   <td style="width:160px">
+    <% vote = current_citizen.votes.find_by(proposal_id: article.id) %>
+    <% if vote %>
+          äänestetty <input type="checkbox" name="vote" checked disabled>
+    <% else %>
+          äänestetty <input type="checkbox" name="vote" disabled>
+    <% end %>                   
+   </td>
+<% end %>
+<% if signed_in? && current_citizen.admin%>
+<td style="width:65px"><%= link_to 'Muokkaa', edit_article_path(article) %></td>
+<td style="width:60px"><%= link_to 'Poista', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+</tr> 
+<tr>
+<td class="text" colspan="9" ><%= article.text %></td> 
+</tr>
+<% end %>
+</table>

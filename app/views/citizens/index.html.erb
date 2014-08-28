@@ -1,0 +1,12 @@
+﻿<% provide(:title, 'Kaikki jäsenet') %>
+<h1>Kaikki jäsenet</h1>
+
+<%= will_paginate :previous_label => 'Edellinen', :next_label => 'Seuraava' %>
+
+<ul class="citizens">
+  <%= render @citizens %>
+</ul>
+
+<%= will_paginate :previous_label => 'Edellinen', :next_label => 'Seuraava' %>
+
+
