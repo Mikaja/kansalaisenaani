@@ -1,28 +1,16 @@
-ï»¿== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# Tämä on Kansalaisen ääni - sovelluksen pre-alpha versio.
+
+Se pohjautuu koodiin, joka löytyy seuraavista lähteistä
+ 
+[*Ruby on Rails Tutorial*](http://www.railstutorial.org/book/beginning#sec-version_control) 
+[*Getting Started with Rails*](http://guides.rubyonrails.org/getting_started.html)
+
+Ohjelma on testattu Windows 7, IE 11 ympäristössä.
+
+Ruby on Rails kehitysympäristö Windowsille on saatu lataamalla ohjelmistopaketti osoitteesta 
+[http://railsinstaller.org/en](http://railsinstaller.org/en)
+
+
+
