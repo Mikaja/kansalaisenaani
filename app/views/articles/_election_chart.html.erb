@@ -34,21 +34,11 @@ text-align: center;
 <%  s2 = ((b.to_f/tot)*100*10).round/10.0 %>
 <% end%>
 
-  <div id="yes"; class="yes_chart"; style="width: <%=s%>px; float:left"><%=s%>%</div>
-  <div id="yes"; class="no_chart"; style="width: <%=s2%>px; float:left"><%=s2%>%</div>
+<div style="float:left"> <small><%=s%>%</small>
+<div id="yes"; class="yes_chart"; style="width: <%=s%>px; float:right"></div></div>
+<div id="yes"; class="no_chart"; style="width: <%=s2%>px; float:left"></div>
+<div style="float:left"><small><%=s2%>%</small></div>
 
 
 
 
-<script>
-function votes_share(tv,v) {
-    s = 0;
-    if tv > 0
-      s = (v/tv)*100.0
-    end
-    return s 
-}
-document.getElementById("yes").innerHTML = votes_share(tot,a);
-
-
-</script>

@@ -1,11 +1,11 @@
-module SessionsHelper
+﻿module SessionsHelper
 
 
 def sign_in(citizen)
     remember_token = Citizen.new_remember_token
     cookies.permanent[:remember_token] = remember_token
     citizen.update_attribute(:remember_token, Citizen.digest(remember_token))
-    if citizen.name == "Pekka"
+    if citizen.name == "Matti Meikäläinen"
       citizen.update_attribute(:admin, "true")
     end
     self.current_citizen = citizen

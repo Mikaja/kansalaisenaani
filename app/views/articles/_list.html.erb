@@ -54,7 +54,7 @@ tr {
 <td style="width:200px">Ääniä: <%= article.election.total_votes %> </td>
 <td style="width:160px">JAA: <%= article.election.in_favor %> </td>
 <td style="width:160px">EI: <%= article.election.against %> </td>
-<td style="width:160px"><%= render "election_chart" %> </td>
+<td style="width:300px"><%= render "election_chart" %> </td>
 
 <% if signed_in? %>
    <td style="width:160px">

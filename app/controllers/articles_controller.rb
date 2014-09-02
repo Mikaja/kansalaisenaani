@@ -1,6 +1,6 @@
 ﻿class ArticlesController < ApplicationController
 before_action :signed_in_citizen, except: [:index, :show, :search]
-before_action :admin_user, only: [:new, :edit, :destroy]
+before_action :admin_user, only: [:new, :edit, :destroy, :create]
 
 def index 
 
@@ -82,7 +82,7 @@ def signed_in_citizen
         unless signed_in?
 
         store_location
-        redirect_to signin_url, notice: "Please sign in."
+        redirect_to signin_url, notice: "Ole hyvä ja kirjaudu sisään."
         end
       
     end

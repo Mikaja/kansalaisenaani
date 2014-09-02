@@ -1,8 +1,17 @@
-﻿ <li>
-      <%= gravatar_for citizen, size:35 %>
-      <%= link_to citizen.name, citizen %>
- <% if current_citizen.admin? && !current_citizen?(citizen) %>
-    | <%= link_to "delete", citizen, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-    </li>
+﻿<li>
+    <%= gravatar_for citizen, size:35 %>
+    <%= link_to citizen.name, citizen %>
+     
+    <% if current_citizen.admin? && !current_citizen?(citizen) %>
+        | <%= link_to "delete", citizen, method: :delete,
+                                data: { confirm: "You sure?" } %>
+        
+    <% end %>
+    <% if current_citizen.admin? %>
+       <% if citizen.admin? %> 
+              | <%= link_to "Poista ylläpito-oikeudet", adminremove_path(citizen),  method: :patch %>
+       <% else %>  
+            | <%= link_to "Anna ylläpito-oikeudet", adminadd_path(citizen),  method: :patch%>
+       <% end %> 
+    <% end %>
+</li>

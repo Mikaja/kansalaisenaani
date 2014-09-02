@@ -23,7 +23,7 @@ def edit
 
 def destroy
     Citizen.find(params[:id]).destroy
-    flash[:success] = "Citizen deleted."
+    flash[:success] = "Jäsen on poistettu."
     redirect_to citizens_url
 end
 
@@ -33,11 +33,15 @@ def create
     if @citizen.save
       sign_in @citizen
       flash[:success] = "Tervetuloa Kansalaisen ääni -palveluun!"
+      if Citizen.count == 1
+         @citizen.update_attribute(:admin, "true")
+      end
       redirect_to @citizen
     else
       render 'new'
     end
   end
+
 def update
     
     if @citizen.update_attributes(citizen_params)
@@ -46,9 +50,19 @@ def update
     else
       render 'edit'
     end
-  end
+end
 
-  private
+def adminadd
+    Citizen.find(params[:format]).update_attribute(:admin, "true")
+    redirect_to citizens_url
+end
+
+def adminremove
+   Citizen.find(params[:format]).update_attribute(:admin, "false")
+   redirect_to citizens_url
+end
+
+private
 
     def citizen_params
       params.require(:citizen).permit(:name, :email, :password,
@@ -56,14 +70,13 @@ def update
     end
  # Before filters
 
-    def signed_in_citizen
-        unless signed_in?
-
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-        end
-      
+def signed_in_citizen
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Ole hyvä ja kirjaudu sisään."
     end
+      
+end
 
  def correct_citizen
       @citizen = Citizen.find(params[:id])

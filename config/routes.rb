@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/search',  to: 'articles#search',      via: 'get'
+  match '/adminadd',  to: 'citizens#adminadd',      via: 'patch'
+  match '/adminremove',  to: 'citizens#adminremove',      via: 'patch'
 
   get 'welcome/index'
 
